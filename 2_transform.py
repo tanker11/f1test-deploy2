@@ -113,7 +113,7 @@ class LoadService:
             return jsonify({"error": str(e)}), 500
 
 app = Flask(__name__)
-service = LoadService(slave_url="http://apiload1:5000") 
+service = LoadService(slave_url="http://10.0.0.4:5000") 
 
 
 @app.route('/health', methods=['GET'])

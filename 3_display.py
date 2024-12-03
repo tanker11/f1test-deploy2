@@ -143,7 +143,7 @@ class MonitorService:
 
 # Flask app for the /health endpoint
 app = Flask(__name__)
-monitor_service = MonitorService(slave_url="http://transform2:5001")  # Update URL as needed
+monitor_service = MonitorService(slave_url="http://10.0.0.5:5001")  # Update URL as needed
 
 
 @app.route('/health', methods=['GET'])
