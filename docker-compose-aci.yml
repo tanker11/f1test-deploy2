@@ -1,0 +1,52 @@
+name: f1test-deploy2
+services:
+  apiload1:
+    build:
+      context: C:\Users\Tanka Róbert\OneDrive\Dokumentumok\Azure\DevOps\f1test-deploy2
+      dockerfile: ./Dockerfile-1-apiload
+    container_name: 1_apiload
+    environment:
+      SERVICE_NAME: 1_apiload
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 5000
+        published: "5000"
+        protocol: tcp
+  display3:
+    build:
+      context: C:\Users\Tanka Róbert\OneDrive\Dokumentumok\Azure\DevOps\f1test-deploy2
+      dockerfile: ./Dockerfile-3-display
+    container_name: 3_display
+    depends_on:
+      apiload1:
+        condition: service_started
+        required: true
+      transform2:
+        condition: service_started
+        required: true
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 5002
+        published: "5002"
+        protocol: tcp
+  transform2:
+    build:
+      context: C:\Users\Tanka Róbert\OneDrive\Dokumentumok\Azure\DevOps\f1test-deploy2
+      dockerfile: ./Dockerfile-2-transform
+    container_name: 2_transform
+    environment:
+      SERVICE_NAME: 2_transform
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 5001
+        published: "5001"
+        protocol: tcp
+networks:
+  default:
+    name: f1test-deploy2_default
