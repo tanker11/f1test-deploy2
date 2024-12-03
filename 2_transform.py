@@ -12,7 +12,7 @@ class LoadService:
     def __init__(self, slave_url, local_db_name="/app/db/transformdata.db"):
         self.slave_url = slave_url
         self.local_db_name = local_db_name
-        self.status = "waiting for loading service2"  # Initial status
+        self.status = "waiting for loading service"  # Initial status
         self.init_db()
 
     def init_db(self):
@@ -62,7 +62,7 @@ class LoadService:
             with sqlite3.connect(self.local_db_name) as local_conn:
                 data.to_sql('session_data', local_conn, if_exists='replace', index=False)
 
-            self.status = "ready2"  # Update status to ready
+            self.status = "ready"  # Update status to ready
             print(f"Transferred {len(data)} rows to the local database.")
         except Exception as e:
             self.status = "error"  # Update status to error
