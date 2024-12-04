@@ -20,11 +20,13 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry --sku 
 ACR-be bejelentkezés docker CLI-vel
 az acr login --name myContainerRegistry
 
-
+Taggelés:
 
 ```docker tag f1test-deploy2-apiload1:latest deploy2tanker11.azurecr.io/f1test-deploy2-apiload1:latest
 docker tag f1test-deploy2-transform2:latest deploy2tanker11.azurecr.io/f1test-deploy2-transform2:latest
 docker tag f1test-deploy2-display3:latest deploy2tanker11.azurecr.io/f1test-deploy2-display3:latest```
+
+Pusholás:
 
 ```docker push deploy2tanker11.azurecr.io/f1test-deploy2-apiload1:latest
 docker push deploy2tanker11.azurecr.io/f1test-deploy2-transform2:latest
@@ -39,3 +41,11 @@ Manuálisan létrehozunk Azure Container Instance-okat, figyelve a portokra, és
 A Load Balancer publikus címével, az 5000, 5001 és 5002 portokon a /health /data és /plot működnek.
 
 Újra pusholt image esetén újraépül a konténer is, és fut benne az új kód.
+
+Alkalmazásnevek:
+apiload1
+transform2
+display3
+
+ACR neve: deploy2tanker11
+címe: deploy2tanker11.azurecr.io
